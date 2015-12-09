@@ -7,9 +7,9 @@
 # Email: alexis.bernard33@gmail.com
 #
 # Created: Tue Dec  8 21:38:46 2015 (+0100)
-# Last-Updated: Wed Dec  9 11:38:37 2015 (+0100)
+# Last-Updated: Wed Dec  9 19:09:58 2015 (+0100)
 #           By: Alexis Bernard
-#     Update #: 23
+#     Update #: 25
 #
 #
 
@@ -54,15 +54,13 @@ def start_server():
         supassword = os.environ['SU_PASSWORD']
     except KeyError:
         supassword = None
-    if supassword == None:
+    if supassword != None:
         subprocess.call(["/usr/sbin/murmurd",
-                         "-fg",
-                         "-ini", "/mumble/mumble-server.ini"])
-    else:
-        subprocess.call(["/usr/sbin/murmurd",
-                         "-fg",
                          "-ini", "/mumble/mumble-server.ini",
                          "-supw", supassword])
+    subprocess.call(["/usr/sbin/murmurd",
+                     "-fg",
+                     "-ini", "/mumble/mumble-server.ini"])
 
 if __name__ == '__main__':
     generate_config()
